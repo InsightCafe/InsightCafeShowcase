@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<style>
+    body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .banner {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .banner::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://picsum.photos/id/598/2000/300');
+        background-size: cover;
+        filter: blur(8px);
+        z-index: -1;
+    }
+    .banner-text {
+        font-size: 48px;
+        color: white;
+        z-index: 1;
+    }
+    .thumbbox {
+		display: flex;
+		flex-direction: column;
+		align-items: center; /* Center items horizontally in the flex container */
+		justify-content: top; /* Center items vertically in the flex container */
+		text-align: center;
+        padding: 20px 0px;
+    }
+    .thumbnails {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px 20px;
+        padding: 40px;
+    }
+	.thumbnails > div {
+	  flex: 1;
+	  max-width: 500px; /* Adjust 20px to account for any margin or padding you might have */
+	  min-width: calc(max(320px, 30%)); /* Adjust this value based on your content's minimum width */
+	}	
+    .thumbnail {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        overflow: hidden;
+        margin-bottom: 10px; /* Space for the project name */
+    }
+    .thumbnail img {
+        width: calc(100%);
+        height: auto;
+        transition: transform 0.5s;
+        z-index: -1;
+    }
+    .thumbnail:hover img {
+        transform: scale(1.60) rotate(23deg);
+    }
+    .project-name {
+        text-decoration: none;
+        color: white;
+        z-index: 2;
+        padding: 5px 0; /* Padding for aesthetic */
+    }
+.thumbnail-link {
+    text-decoration: none;
+    color: white;
+}
+
+.thumbnail-link:hover .project-name, .thumbnail-link:hover img {
+    text-decoration: underline; /* This applies underline when the link is hovered */
+}	
+</style>
+</head>
+<body>
+
+<div class="banner">
+    <div class="banner-text">What I Do</div>
+</div>
+
+<div class="thumbnails">
+	<div class="thumbbox">
+		<a href="./project-685.html" class="thumbnail-link">
+			<div class="thumbnail">
+				<img src="./thumbnails/peuler.jpg" alt="Project Euler Problems">
+			</div>
+			<div class="project-name">Project Euler Problems</div>
+		</a>
+	</div>
+	<div class="thumbbox">
+		<a href="./project-686.html" class="thumbnail-link">
+			<div class="thumbnail">
+				<img src="./thumbnails/bpm.png" alt="Project 686">
+			</div>
+			<div class="project-name">Beats Per Minute Adder for Songs</div>
+		</a>
+	</div>
+	<div class="thumbbox">
+		<a href="./project-687.html" class="thumbnail-link">
+			<div class="thumbnail">
+				<img src="./thumbnails/tetris.jpg" alt="Project 687">
+			</div>
+			<div class="project-name">Tetris Puzzle Solver</div>
+		</a>
+	</div>
+<!--	<div class="thumbbox">
+		<a href="./project-688.html" class="thumbnail-link">
+			<div class="thumbnail">
+				<img src="https://picsum.photos/id/688/300/200" alt="Project 688">
+			</div>
+			<div class="project-name">Project 688</div>
+		</a>
+	</div>
+	<div class="thumbbox">
+		<a href="./project-689.html" class="thumbnail-link">
+			<div class="thumbnail">
+				<img src="https://picsum.photos/id/689/300/200" alt="Project 689">
+			</div>
+			<div class="project-name">Project 689</div>
+		</a>
+	</div>
+-->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
+<html>
+    <head>
+        <title>Beats Per Minute Adder for Songs</title>
+        <style>
+            body {
+                background-color: #000; /* black background */
+                font-family: 'Montserrat', sans-serif; /* non-standard font */
+                color: #fff; /* white text */
+            }
+            .title {
+                font-size: 48px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .image {
+                margin: 20px;
+                width: calc(33.33% - 40px);
+            }
+            .image:first-child {
+                width: 600px;
+                height: 400px;
+            }
+            .image:nth-child(2) {
+                width: 400px;
+                height: 120px;
+            }
+            .image:nth-child(3) {
+                width: 800px;
+                height: 600px;
+            }
+            .text {
+                max-width: 700px;
+                margin: 0 auto 0 auto;
+                text-align: center;
+            }
+            .table-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px 20px;
+                padding: 0px;
+                width: 100%;
+                margin: 40px auto;
+                text-align: center;
+                justify-content: center;
+            }
+			.white-box {
+				background-color: #fff; /* white background */
+				color: #000; /* black text */
+				padding: 20px 20px 40px 20px;
+				margin: 20px auto 200px auto;
+				border-radius: 10px;
+				box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* light shadow for 3D effect */
+				max-width: 600px; /* width to look like a piece of paper */
+				text-align: left; /* left-align for a professional look */
+			}
+			.subtitle {
+				font-size: 20px;
+				text-decoration: underline;
+				text-align: center
+			}			
+        </style>
+    </head>
+    <body>
+        <h1 class="title">Beats Per Minute Adder for Songs</h1>
+        <div class="table-container">
+            <div class="text">
+                <p>This python project is a beats per minute adder that takes a folder as input and lets the user tap out the beat to several songs in succession, only needing 7-15 seconds of input for each song. After it has determined it knows the beat, it moves onto the next song.<br><br><br>Link</p>
+				<p><a href="https://github.com/InsightCafe/BPM-Adder" style="color: #FFFFFF">Github BPM-Adder Repository</a></p>
+				<br><br><br>
+				The first backbone function is <b>estimate_bpm_simple</b> and provides a simple benchmark estimate for the BPM of a song from the input taps.
+				<br><br>The second backbone function is <b>estimate_bpm_complex</b>.
+				<p>It uses a maximum likelihood estimator for sections of consistent taps to the beat.</p>
+</div></div>
+<div class="white-box">
+<p>Given a set of \(n\) taps \(t_i\) for \(i\) = \(1\) \(\ldots\) \(n\), an unbiased estimate \(\hat{\mu}\) of the time between taps is:</p>
+<p>
+  \[
+  \hat{\mu} = \frac{\sum_{i=1}^{n-1} (t_{i+1} - t_i)}{n - 1}
+  \tag{A}
+  \]
+</p>
+
+<br>
+This idea, along with a few other practical analysis steps, were implemented in the more complex function.
+<br><br><div class="subtitle">Proof of Unbiasedness of the Estimator for the BPM</div>
+<p>Let \( x \) be the time between beats.</p>
+<p>To show that \( \hat{\mu} \) is an unbiased estimator of the time between beats \( x \), we will prove that \( \mathbb{E}(\hat{\mu}) = x \).</p>
+<p>If we assume that the observed values \( t_i \) of taps \( i \) (from 1 to \( n \)) are some Normal distribution \( \text{Norm}(0, \sigma^2) \) away from their true values, then:</p>
+\[ t_i = x \cdot i + \epsilon_i \]
+<p>where \( \epsilon_i \sim \text{Norm}(0, \sigma^2) \) for some \( \sigma \ll x \).</p>
+
+<p>Taking the expected value of both sides of equation A, we have:</p>
+<p>
+  \[
+  \begin{align*}
+  \mathbb{E}(\hat{\mu}) &= \mathbb{E}\left( \frac{\sum_{i=1}^{n-1} (t_{i+1} - t_i)}{n - 1} \right) \\[10pt]
+  &= \frac{\sum_{i=1}^{n-1} \mathbb{E}(t_{i+1} - t_i)}{n - 1} \\[10pt]
+  &= \frac{\sum_{i=1}^{n-1} \mathbb{E}(x \cdot (i+1) + \epsilon_{i+1} - x \cdot i - \epsilon_i)}{n - 1} \\[10pt]
+  &= \frac{\sum_{i=1}^{n-1}[x \cdot (i+1) + \mathbb{E}(\epsilon_{i+1}) - x \cdot i - \mathbb{E}(\epsilon_i)]}{n - 1} \\[10pt]
+  \end{align*}
+  \]
+ <p>And since \(\epsilon_i\) is a Normal distribution, \( \mathbb{E}(\epsilon_i) = 0 \) for all \( i \), and this simplifies to:</p>
+  \[
+  \begin{align*}
+  &= \frac{\sum_{i=1}^{n-1}[ x \cdot i + x - x \cdot i]}{n - 1} \\[10pt]
+  &= \frac{\sum_{i=1}^{n-1}x}{n - 1} \\[10pt]
+  &= \frac{(n - 1) \cdot x}{n - 1} \\[10pt]
+  &= x
+  \end{align*}
+  \]
+</p>
+<p>Therefore, \( \mathbb{E}(\hat{\mu}) = x \) and \( \hat{\mu} \) is an unbiased estimator of \( x \).</p>
+
+            </div>
+    </body>
+</html>
